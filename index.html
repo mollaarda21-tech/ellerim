@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Sana Özel 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body{
+        margin:0;
+        font-family:'Segoe UI',sans-serif;
+        background:linear-gradient(120deg,#ff9a9e,#fad0c4);
+        overflow-x:hidden;
+    }
+    .container{
+        max-width:900px;
+        margin:auto;
+        padding:20px;
+        text-align:center;
+    }
+    .card{
+        background:white;
+        border-radius:20px;
+        padding:25px;
+        margin:15px 0;
+        box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+    h1,h2{color:#ff4b6e;}
+    button{
+        padding:10px 20px;
+        border:none;
+        border-radius:20px;
+        background:#ff4b6e;
+        color:white;
+        font-size:15px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+    button:hover{background:#e63b5c;}/* Galeri */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:10px;
+}
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    object-fit:cover;
+}
+
+/* Kalpler */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    color:#ff4b6e;
+    font-size:20px;
+    animation:fly 6s linear infinite;
+}
+@keyframes fly{
+    from{transform:translateY(0);opacity:1;}
+    to{transform:translateY(-110vh);opacity:0;}
+}
+
+textarea{
+    width:100%;
+    min-height:80px;
+    border-radius:10px;
+    padding:10px;
+    border:1px solid #ddd;
+    resize:none;
+}
+.messages p{
+    background:#ffe4ea;
+    padding:10px;
+    border-radius:10px;
+    margin:8px 0;
+}
+
+</style>
+</head>
+<body><audio id="music" loop>
+  <source src="yalın.MP3" type="audio/mpeg">
+</audio><div class="container"><div class="card">
+    <h1>💗 Aşkım 💗</h1>
+    <p>Bu siteyi sadece senin için yaptım. Çünkü sen benim hayatımdaki en güzel şeysin.</p>
+    <button onclick="toggleMusic()">🎵 Müziği Aç / Kapat</button>
+</div>
+
+<div class="card">
+    <h2>📅 Biz Ne Zamandır Birlikteyiz?</h2>
+    <p id="counter"></p>
+</div>
+
+<div class="card">
+    <h2>📸 Anılarımız</h2>
+    <div class="gallery">
+        <img src="fotolar/foto1.jpeg">
+        <img src="fotolar/foto2.jpeg">
+ 	<img src="fotolar/foto3.jpeg">
+ 	<img src="fotolar/foto4.jpeg">
+ 	<img src="fotolar/foto5.jpeg">
+ 	<img src="fotolar/foto6.jpeg">
+ 	<img src="fotolar/foto7.jpeg">
+ 	<img src="fotolar/foto8.jpeg">
+
+    </div>
+    <p style="font-size:13px;">(Buraya kendi fotoğraflarınızı koyabilirsin)</p>
+</div>
+
+<div class="card">
+    <h2>💬 Sana Mesajım</h2>
+    <p>  AŞGIM,
+      
+        Seni gördüğüm ilk günden beri içimden geçen duyguların ve hislerin kelime karşılığı olamaz ama bir kaö kod yazarak umarım anlatabilirim.Seninle kaç gündür beraber olduğumuz yukarıda bir yerlerde
+      yazıyor o günler o kadar hızlı geçti ki benim için anlatamam bu süre içinde sen sadece benim sevgilim değil en yakın arkadaşım, sırdaşım , huzurum ve mutluluk kaynağım oldun . En saçma anlarda bile 
+      beni güldürmeyi başardın en kendimde olmadığım gün yanımda hep sen durdun her şey için teşekkürler hayatımın anlamı asgımm . Büyük ihtimalle ben bunları yazarken sen benim çok önemli bir işim olduğunu 
+      sanıyorsun bunları sana hazırlamak için biraz yalnız bıraktım i so sorry babe .Hayatıma giridğinden bende çok şey değiştirdin ve bana çok şey kattın seninle olan bütün anılarımı hafızamın en yüksek ıq olan 
+      yerine kaydettim bitanem güvendeler kaydettim ki şuan beraber olmadığımız zamanlar da hatırlayıp huzur dolayım seni çok seviyorum aşgım umarım hediyelerimi ve internet siteni beğernirsin şimdi daha 
+      fazla yalnız bırakmamam gereken bir fıstık var görüşürüüüzz muaah 
+      
+      Seninle geçen her an benim için çok değerli. Gülüşün, sesin, varlığın... Her şeyinle iyi ki varsın ❤️</p>
+</div>
+
+<div class="card">
+    <h2>💌 Bana Mesaj Bırak</h2>
+    <textarea id="msg" placeholder="Buraya bir şeyler yaz..."></textarea>
+    <br><br>
+    <button onclick="mesajEkle()">Gönder</button>
+    <div class="messages" id="messages"></div>
+</div>
+
+</div><script>
+// Gün sayacı
+const baslangic = new Date("2025-08-17"); // TARİHİ BURADAN DEĞİŞTİR
+function guncelle(){
+    const simdi = new Date();
+    const fark = simdi - baslangic;
+    const gun = Math.floor(fark / (1000*60*60*24));
+    document.getElementById("counter").innerText = gun + " gündür birlikteyiz 💞";
+}
+setInterval(guncelle,1000);
+
+guncelle();
+
+// Müzik
+const music = document.getElementById("music");
+let playing=false;
+function toggleMusic(){
+    if(!playing){ music.play(); playing=true; }
+    else{ music.pause(); playing=false; }
+}
+
+// Kalp animasyonu
+setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+15)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+},500);
+
+// Mesajlar
+function mesajEkle(){
+    const text=document.getElementById("msg").value;
+    if(text.trim()==="") return;
+    const p=document.createElement("p");
+    p.innerText=text;
+    document.getElementById("messages").prepend(p);
+    document.getElementById("msg").value="";
+}
+</script></body>
+</html>
